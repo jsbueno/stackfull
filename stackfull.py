@@ -40,12 +40,10 @@ def stack():
 
 def roll(items, ammount):
     stack = currentframe().f_back.f_locals.setdefault(SN, [])
-    top = stack[-items:]
+    top = deque(stack[-items:])
     top.rotate(ammount)
     stack[-items:] = top
     return stack[-1]
 
-    
-    
 def clear():
     currentframe().f_back.f_locals[SN] = []
