@@ -2,7 +2,7 @@ PYTHON STACKFULL
 ================
 
 This small utility package provides functions to be used
-inside Pythob expressions that provide functionality
+inside Python expressions that provide functionality
 like that available in stack-based languages
 (such as forth and postscript).
 
