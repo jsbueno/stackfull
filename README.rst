@@ -16,20 +16,16 @@ a value is complicated to retrieve - (or
 computationally extensive) - instead of
 having to retrieve it in a previous line
 and storing said value in a variable,
-one gets the ability to "push" teh value
+one gets the ability to "push" the value
 in this implicit stack - and retrieve it
-in another part of the same expression:
+in another part of the same expression::
      
-result = pop().upper() if not push(get_my+expensive_value()).isdigit() else pop()
+     result = pop().upper() if not push(get_my+expensive_value()).isdigit() else pop()
 
 For conveninece, most functions return the valued passed
 to them in the first place (like the push above).
 
-Possibly in the future a decorator could  be provided
+Possibly in the future a decorator could be provided
 to modify the bytecode of calling the functions defined
 in here to make use of the actual value stack running
 inside the Python VM. **Then this will be fun**
-
-
-
-
