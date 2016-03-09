@@ -5,7 +5,7 @@ from setuptools import setup
 
 import os
 
-version = '0.8'
+version = '0.9'
 description = "Tools for stack-usage in Python expressions",
 
 def filedata(name):
@@ -28,7 +28,7 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: End Users/Desktop",
-        "Intended Audience :: Developers", 
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
