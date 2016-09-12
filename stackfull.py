@@ -11,7 +11,7 @@ based languages, like Postscript and Forth conveninently
 available to be used in any Python expression.
 
 
-(MAYBE) TODO: create a decorator which trasnform the operations here
+(MAYBE) TODO: create a decorator which transform the operations here
 in real operations in the Python VM stack,
 by modifying the bytecode of calls to these utility functions into
 actual Python VM stack operations.
