@@ -1,5 +1,8 @@
 import stackfull
-from stackfull import push, pop, dup, clear, roll, retr, stack, popclear, cleartomark, MARK
+from stackfull import (push, pop, dup,
+                       clear, roll, retr,
+                       stack, popclear, cleartomark,
+                       MARK, push_if_true, discard_if_false)
 import unittest
 
 
@@ -115,6 +118,16 @@ class StackTest(unittest.TestCase):
             push(j)
         self.assertEqual([42, 9], stack())
 
+    def test_push_if_true(self):
+        results = [(pop(), len(stack())) for i in range(10) if push_if_true(i % 2)]
+        assert all(result[1] == 0 for result in results)
+        assert len(results) == 5
+
+    def test_discard_if_false(self):
+        results = [(pop(), len(stack())) for i in range(10) if discard_if_false(push(i) % 2)]
+        assert all(result[1] == 0 for result in results)
+        assert len(results) == 5
+        assert [result[0] for result in results] == list(range(1, 10, 2))
 
 if __name__ == "__main__":
     unittest.main()

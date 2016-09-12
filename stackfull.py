@@ -126,3 +126,36 @@ def cleartomark():
     if stack:
         return stack[-1]
     return MARK
+
+
+def push_if_true(value):
+    """
+    Returns the value itself, and Pushes a value into the stack, if it
+    is truthy. Otherwise does not touch the stack.
+    Nice to use inside  comprehensions
+    in the "if" part: if the expession is not True, it is never pushed, and
+    extraneous values don't pile up on the stack.
+
+    Ex.:
+    [pop().name for image in values if push_if_true(image)]
+
+    """
+    if value:
+        stack = currentframe().f_back.f_locals.setdefault(SN, [])
+        stack.append(value)
+    return value
+
+
+def discard_if_false(value):
+    """
+    Removes the last value in the stack if the expression is false.
+    Made to be used in comprehensions, in the if part:
+
+    Ex.:
+    [pop().name for image in values if pop_if_false(push(image) is not None)]
+
+    """
+    if not value:
+        stack = currentframe().f_back.f_locals.setdefault(SN, [])
+        stack.pop()
+    return value
