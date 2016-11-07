@@ -2,7 +2,8 @@ import stackfull
 from stackfull import (push, pop, dup,
                        clear, roll, retr,
                        stack, popclear, cleartomark,
-                       MARK, push_if_true, discard_if_false)
+                       MARK, push_if_true, discard_if_false,
+                       window)
 import unittest
 
 
@@ -128,6 +129,10 @@ class StackTest(unittest.TestCase):
         assert all(result[1] == 0 for result in results)
         assert len(results) == 5
         assert [result[0] for result in results] == list(range(1, 10, 2))
+
+    def test_window_function(self):
+        assert [push(stack()[-2] +  stack()[-1]) for i in window(range(2,12), 0,1)] == [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
 
 if __name__ == "__main__":
     unittest.main()

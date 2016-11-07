@@ -5,7 +5,7 @@ from setuptools import setup
 
 import os
 
-version = '0.10'
+version = '0.20'
 description = "Tools for stack-usage in Python expressions"
 
 def filedata(name):
@@ -34,7 +34,6 @@ setup(
         'License :: OSI Approved :: Python Software Foundation License',
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",

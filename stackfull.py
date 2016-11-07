@@ -159,3 +159,19 @@ def discard_if_false(value):
         stack = currentframe().f_back.f_locals.setdefault(SN, [])
         stack.pop()
     return value
+
+
+def window(iterable, *seeds):
+    """Pre-populates a frame stack with the seed values,
+    and then iterates over the iterable -
+
+        This allows one to use the stack with initial values in a simple way
+        in a generator-expression context - like
+
+        `fib = [push(stack()[-2] + stack()[-1]) for i in window(range(2, 10), 1,1)]`
+    """
+    stack = currentframe().f_back.f_locals.setdefault(SN, [])
+    for seed in seeds:
+        stack.append(seed)
+
+    yield from iterable

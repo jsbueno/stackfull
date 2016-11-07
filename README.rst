@@ -25,7 +25,15 @@ in another part of the same expression::
 For convenience, most functions return the valued passed
 to them in the first place (like the push above).
 
-Avalilable functions:
+
+Compatibility
+==============
+As of version 0.20, and introduction of the `window`
+function, stackfull is no longer Python 2.x compatible.
+
+
+Available functions:
+====================
 
 clear
 _____
@@ -122,4 +130,16 @@ _____
     Retrieves the stack as an ordinary Python list
     (which it actually is), allowing one to perform
     extra desired operations, such as 'len' or 'insert'
+
+
+window
+______
+
+    Pre-populates a frame stack with the seed values,
+    and then iterates over the iterable -
+
+    This allows one to use the stack with initial values in a simple way
+    in a generator-expression context - like
+
+    `fib = [push(stack()[-2] + stack()[-1]) for i in window(range(2, 10), 1,1)]`
 
