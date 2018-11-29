@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # Author: João S. O. bueno
 
+from pathlib import Path
 from setuptools import setup
 
 import os
 
-version = '0.20'
+version = "1.0.0"
 description = "Tools for stack-usage in Python expressions"
 
 def filedata(name):
@@ -14,14 +15,19 @@ def filedata(name):
     except Exception as error:
         return ""
 
+here = Path(os.path.abspath(os.path.dirname(__file__)))
+docs = here / "docs"
+
 long_description = "\n".join((filedata("README.txt"),
-    filedata("docs/INSTALL.txt"),
-    filedata("docs/CREDITS.txt"),
-    filedata("docs/HISTORY.txt"),
+    filedata(docs / "INSTALL.txt"),
+    filedata(docs / "CREDITS.txt"),
+    filedata(docs / "STACKFULL.txt"),
     ))
 
 setup(
     name='stackfull',
+    py_modules=['stackfull'],
+    package_dir={'':'src'},
     version=version,
     description=description,
     long_description=long_description,
@@ -43,7 +49,6 @@ setup(
     author_email='gwidion@gmail.com',
     url='https://github.com/jsbueno/stackfull',
     license='License :: OSI Approved :: Python Software Foundation License',
-    py_modules=['stackfull'],
     zip_safe=False,
     install_requires=[],
     extras_require={},

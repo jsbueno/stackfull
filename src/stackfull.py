@@ -24,6 +24,14 @@ SN = ".stackfull"
 MARK = object()
 
 
+class StackUnderflowError(IndexError):
+    pass
+
+
+def _get_stack():
+    return currentframe().f_back.f_back.f_locals.setdefault(SN, [])
+
+
 def push(value):
     """
     Pushes a value into the stack, and returns the value itself
@@ -33,18 +41,22 @@ def push(value):
     available to use inside the defined block - without
     the need of an explicit auxiliar variable
     """
-    stack = currentframe().f_back.f_locals.setdefault(SN, [])
-    stack.append(value)
+    _get_stack().append(value)
     return value
 
 
+def _pop(stack):
+    try:
+        return stack.pop()
+    except IndexError as error:
+        raise StackUnderflowError from error
+
 def pop():
     """
-    Pops the last value from the stack
+    Pops the topmost value from the stack
     """
-    stack = currentframe().f_back.f_locals.setdefault(SN, [])
-    return stack.pop()
-
+    stack = _get_stack()
+    return _pop(stack)
 
 def popclear():
     """
